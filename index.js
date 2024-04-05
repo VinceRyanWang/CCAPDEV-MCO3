@@ -9,8 +9,6 @@ const path = require('path');
 const Account = require('./models/Account');
 const Reservation = require('./models/Reservation');
 const Lab = require('./models/Lab');
-const TimeSlot = require('./models/TimeSlot');
-const Seat = require('./models/Seat');
 const { MongoClient, ObjectId } = require('mongodb');
 
 const app = express();
