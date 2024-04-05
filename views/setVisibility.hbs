@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Selection</title>
+
+    <!--Style Sheet-->
+    <link rel="stylesheet" href="/css/setVisibility.css">
+
+    <!--Google Fonts and Icons-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+
+
+    <div class="rooms">
+      <div class="form">
+        <div class="slot-selector">
+
+          <!--Lab Name-->
+          <div class="head">
+            <div class="title">Set Reservation</div>
+          </div>
+
+          <div class="view-slider">
+
+            <!--lab Slots-->
+            <div class="status">
+              <input type="radio" name="view" id="l1" checked />
+              <label for="l1" class="view"> Visible</label>
+              <input type="radio" id="l2" name="view" />
+              <label for="l2" class="view"> Anonymous </label>
+
+            </div>
+          </div>
+        </div>
+        <div class="book">
+            <!--<button type="button" onclick="window.location.href = 'reserve.html';">Back</button>-->
+            <a href="/confirmation" onclick="confirm()"><button type="button">Next</button></a>
+        </div>
+      </div>
+    </div>
+    <script>
+        function confirm()
+        {
+            window.location.href = 'confirmation.hbs';
+        }
+    </script>
+    </body>
+</html>

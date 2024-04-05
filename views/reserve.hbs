@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Booking</title>
+
+    <!--Style Sheet-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/reservehbs.css">
+    <style>
+        .seat-box {
+            width: 30px;
+            height: 30px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+
+        .seat-box.available {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        .seat-box.taken {
+            background-color: #f2dede;
+            color: #a94442;
+            cursor: not-allowed;
+        }
+
+        .seat-box.selected {
+            background-color: #337ab7;
+            color: #fff;
+        }
+    </style>
+    <!--Google Fonts and Icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+
+</head>
+<body>
+    <div class="lab">
+        <div class="form">
+            <div class="labs">
+                <!-- Lab Selection -->
+                <form>
+                    <select id="labSelect" onchange="handleLabChange()">
+                        <option value="G301">G301</option>
+                        <option value="G302">G302</option>
+                        <option value="G303">G303</option>
+                    </select>
+
+                    <select id="dateSelect" onchange="handleDateChange()">
+                        <option value="05-01-2024">05-01-2024</option>
+                        <option value="05-01-2024">05-02-2024</option>
+                        <option value="05-03-2024">05-03-2024</option>
+                        <option value="05-04-2024">05-04-2024</option>
+                        <option value="05-05-2024">05-05-2024</option>
+                        <option value="05-06-2024">05-06-2024</option>
+                        <option value="05-07-2024">05-07-2024</option>
+                    </select>
+
+                    <select id="timeSelect" onchange="handleDateChange()">
+                        <option value="7:00-7:30">7:00-7:30</option>
+                        <option value="8:00-8:30">8:00-8:30</option>
+                        <option value="9:00-9:30">9:00-9:30</option>
+                        <option value="10:00-10:30">10:00-10:30</option>
+                        <option value="11:00-11:30">11:00-11:30</option>
+                        <option value="12:00-12:30">12:00-12:30</option>
+                        <option value="13:00-13:30">13:00-13:30</option>
+                        <option value="14:00-14:30">14:00-14:30</option>
+                        <option value="15:00-15:30">15:00-15:30</option>
+                        <option value="16:00-16:30">16:00-16:30</option>
+                        <option value="17:00-17:30">17:00-17:30</option>
+                        <option value="18:00-18:30">18:00-18:30</option>
+                    </select>
+
+                    <button type="submit" class="btn" style="border: 1px solid green;"> Filter </button>
+                </form>
+                <!-- Slot Selector -->
+                <div class="slot-selector">
+                    <!--Lab Name-->
+                    <div class="head">
+                        <div class="title">Lab: {{lab.room}}</div>
+                    </div>
+
+                    <!-- Seats -->
+                    <div class="seats">
+
+                        <!-- Box slots -->
+                        <div class="all-seats"></div>
+                    </div>
+
+                    <!-- Time Selection -->
+                    <!-- 
+                    <div class="timings">
+                        <div class="times">
+                            <input type="radio" name="time" id="t1" checked />
+                            <label for="t1" class="time">7:00 - 7:30</label>
+                            <input type="radio" id="t2" name="time" />
+                            <label for="t2" class="time">8:00 - 8:30</label>
+                            <input type="radio" id="t3" name="time" />
+                            <label for="t3" class="time">9:00 - 9:30</label>
+                            <input type="radio" id="t4" name="time" />
+                            <label for="t4" class="time">10:00 - 10:30</label>
+                        </div>
+
+                        <div class="times">
+                            <input type="radio" name="time" id="t5">
+                            <label for="t5" class="time">11:00 - 11:30</label>
+                            <input type="radio" id="t6" name="time" />
+                            <label for="t6" class="time">12:00 - 12:30</label>
+                            <input type="radio" id="t7" name="time" />
+                            <label for="t7" class="time">13:00 - 13:30</label>
+                            <input type="radio" id="t8" name="time" />
+                            <label for="t8" class="time">14:00 - 14:30</label>
+                        </div>
+
+                        <div class="times">
+                            <input type="radio" name="time" id="t9">
+                            <label for="t9" class="time">15:00 - 15:30</label>
+                            <input type="radio" id="t10" name="time" />
+                            <label for="t10" class="time">16:00 - 16:30</label>
+                            <input type="radio" id="t11" name="time" />
+                            <label for="t11" class="time">17:00 - 17:30</label>
+                            <input type="radio" id="t12" name="time" />
+                            <label for="t12" class="time">18:00 - 18:30</label>
+                        </div>
+                    </div> -->
+                </div>
+
+                <select id="visibilitySelect" onchange="handleVisibilityChange()">
+                    <option value="Visible">Visible</option>
+                    <option value="Anonymous">Anonymous</option>
+                </select>
+
+                <!-- Booking Section -->
+                <div class="book">
+
+                    <a href="/confirmation" onclick="visibility()"><button type="button">Book</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/reserve.js"></script>
+
+    <script>
+        const form = document.querySelector('form');
+        const seatsContainer = document.querySelector('.all-seats');
+        const visibilitySelect = document.getElementById('visibilitySelect');
+        let selectedSeats = [];
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const labSelect = document.getElementById('labSelect');
+            const dateSelect = document.getElementById('dateSelect');
+            const timeSelect = document.getElementById('timeSelect');
+
+            const selectedLab = labSelect.value;
+            const selectedDate = dateSelect.value;
+            const selectedTime = timeSelect.value;
+            const selectedVisibility = visibilitySelect.value;
+
+            try {
+            const response = await fetch('/resv/getAvailableSeats', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ lab: selectedLab, date: selectedDate, time: selectedTime }),
+            });
+
+            const seatData = await response.json();
+
+            seatsContainer.innerHTML = '';
+            selectedSeats = []; // Reset selected seats
+
+            seatData.forEach((seat) => {
+                const seatBox = document.createElement('div');
+                seatBox.className = 'seat-box';
+                seatBox.textContent = seat.seatNumber;
+
+                if (!seat.isAvailable) {
+                seatBox.classList.add('taken');
+                } else {
+                seatBox.classList.add('available');
+                seatBox.addEventListener('click', () => {
+                    seatBox.classList.toggle('selected');
+                    if (seatBox.classList.contains('selected')) {
+                    selectedSeats.push(seat.seatNumber);
+                    } else {
+                    selectedSeats = selectedSeats.filter((seatNum) => seatNum !== seat.seatNumber);
+                    }
+                });
+                }
+
+                seatsContainer.appendChild(seatBox);
+            });
+
+            } catch (error) {
+            console.error('Error:', error);
+            }
+
+        });
+    </script>
+    <script>
+        const bookButton = document.querySelector('.book button');
+        bookButton.addEventListener('click', async () => {
+        const labSelect = document.getElementById('labSelect');
+        const dateSelect = document.getElementById('dateSelect');
+        const timeSelect = document.getElementById('timeSelect');
+        const visibilitySelect = document.getElementById('visibilitySelect');
+
+        const selectedLab = labSelect.value;
+        const selectedDate = dateSelect.value;
+        const selectedTime = timeSelect.value;
+        const selectedVisibility = visibilitySelect.value;
+
+        try {
+        const response = await fetch('/resv/createReservation', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+            lab: selectedLab,
+            date: selectedDate,
+            time: selectedTime,
+            selectedSeats,
+            visibility: selectedVisibility,
+            }),
+        });
+
+        const data = await response.json();
+        console.log(data.message); // Log the response message
+
+        window.location.href = '/confirmation';
+        } catch (error) {
+        console.error('Error:', error);
+        }
+    });
+    </script>
+</body>
+</html>

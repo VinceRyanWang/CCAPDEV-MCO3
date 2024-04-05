@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset="UTC-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width =device-width,initial-scale=1.0">
+
+        <title>
+            Student Home Page
+        </title>
+
+        <!--Style Sheet-->
+        <link rel="stylesheet" href="/css/home.css">
+
+    </head>
+
+    <body>
+        <header>
+            <h2 class="logo"> CCAPDEV MCO</h2>
+            <!--Top bar-->
+            <nav class="navigation">
+                <a href="/reserve" onclick="labSelection();">Reserve Seats</a>
+                <a href="/profile" onclick="profile()">View Profile</a>
+                <a href="/about" onclick="about()">About Me</a>
+                <a href="/" onclick="logout()"><button class="logout"> Logout </button></a>
+            </nav>
+
+        </header>
+
+        <script>
+            function labSelection()
+            {
+                window.location.href = 'reserve.hbs';
+            }
+
+            function profile()
+            {
+                window.location.href = 'profile.hbs';
+            }
+
+            function logout()
+            {
+                window.location.href = 'index.hbs';
+            }
+
+           function about()
+            {
+                window.location.href = 'about.hbs';
+            }
+
+        </script>
+    </body>
+</html>

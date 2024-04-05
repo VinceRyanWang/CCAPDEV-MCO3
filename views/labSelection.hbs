@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Selection</title>
+
+    <!--Style Sheet-->
+    <link rel="stylesheet" href="/css/labSelection.css">
+    
+
+    <style> 
+      .labs {
+    display: flex;
+    flex-wrap: wrap;
+    }
+
+      .lab {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .lab input[type="radio"] {
+        display: none;
+      }
+
+      .lab input[type="radio"]:checked + label {
+        background-color: #007bff;
+        color: #fff;
+      }
+    </style>
+    <!--Google Fonts and Icons-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp|Material+Icons+Two+Tone"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+  <body>
+
+
+    <div class="rooms">
+      <div class="form">
+        <div class="slot-selector">
+
+          <!--Lab Name-->
+          <div class="head">
+            <div class="title">Choose a Lab</div>
+          </div>
+
+          <div class="lab-slots">
+
+            <!--lab Slots-->
+            <div class="labs">
+              <a href="/resv/G301">
+                <label for="G301" class="lab"> G301 </label>
+              </a>
+              <a href="/resv/G302"><label for="G302" class="lab"> G302 </label>
+              </a>
+              
+              <a href="/resv/G303"><label for="G303" class="lab"> G303 </label>
+              </a>
+            </div>
+
+          </div>
+
+          
+
+        </div>
+
+        
+        <div class="book">
+            <!--<button type="button" onclick="window.location.href = 'profile.html';">Back</button>-->
+            <!--<a href="/reserve" onclick="reserve()"><button type="button">Next</button></a>-->
+        </div>
+        
+      </div>
+    </div>
+
+    <script>
+      function reserve()
+      {
+        window.location.href = 'reserve';
+      }
+
+    </script>
+  </body>
+</html>
+
