@@ -41,7 +41,7 @@ const url = 'mongodb://localhost:27017/trying';
 const dbName = 'trying';
 
 //MongoDB Connect
-mongoose.connect('mongodb://localhost:27017/trying')
+mongoose.connect('mongodb+srv://vincewang:itQ22OwwU3oskTZZ@cluster0.gskubta.mongodb.net/')
   .then(() => {
     console.log('Connected to MongoDB');
   })
