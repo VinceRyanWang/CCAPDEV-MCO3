@@ -21,12 +21,14 @@
             <nav class="navigation">
                 <a href="/reserve" onclick="labSelection();">Reserve Seats</a>
                 <a href="/profile" onclick="profile()">View Profile</a>
-                <a href="/about" onclick="about()">About Me</a>
+                <a href="/reservationcatalog" onclick="reservationCatalog()">Reservation Catalog</a>
+                <a href="/about" onclick="about()">About Us</a>
                 <a href="/" onclick="logout()"><button class="logout"> Logout </button></a>
             </nav>
 
         </header>
 
+        <h1>WELCOME!</h1>
         <script>
             function labSelection()
             {
@@ -41,6 +43,11 @@
             function logout()
             {
                 window.location.href = 'index.hbs';
+            }
+            
+           function reservationCatalog()
+            {
+                window.location.href = 'reservationCatalog.hbs';
             }
 
            function about()
