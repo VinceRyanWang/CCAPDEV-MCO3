@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
       const hashedPassword = await bcrypt.hash(password, 10);
       const account = new Account({ email, name, password: hashedPassword, accountType});
       await account.save();
-      res.status(201).redirect('http://localhost:3000/');
+      res.status(201).redirect('/index');
     } catch (error) {
       console.error(error);
       res.status(500).send('Error registering account');
